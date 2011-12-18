@@ -1,7 +1,12 @@
 class Game
+    constructor: ->
+        @score = 0
+
     roll: (pins) ->
-    score: ->
-        0
+        @score += pins
+
+    getScore: ->
+        @score
 
 exports.Game = ->
     new Game()

@@ -1,10 +1,14 @@
 (function() {
   var Game;
   Game = (function() {
-    function Game() {}
-    Game.prototype.roll = function(pins) {};
-    Game.prototype.score = function() {
-      return 0;
+    function Game() {
+      this.score = 0;
+    }
+    Game.prototype.roll = function(pins) {
+      return this.score += pins;
+    };
+    Game.prototype.getScore = function() {
+      return this.score;
     };
     return Game;
   })();
