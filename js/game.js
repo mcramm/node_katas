@@ -12,7 +12,10 @@
       score = 0;
       current_frame = 0;
       for (frame = 0; frame <= 9; frame++) {
-        if (this._isSpare(current_frame)) {
+        if (this._isStrike(current_frame)) {
+          score += this._strikeBonus(current_frame);
+          current_frame += 1;
+        } else if (this._isSpare(current_frame)) {
           score += this._spareBonus(current_frame);
           current_frame += 2;
         } else {
@@ -22,8 +25,14 @@
       }
       return score;
     };
+    Game.prototype._isStrike = function(current_frame) {
+      return this.rolls[current_frame] === 10;
+    };
     Game.prototype._isSpare = function(current_frame) {
       return this.rolls[current_frame] + this.rolls[current_frame + 1] === 10;
+    };
+    Game.prototype._strikeBonus = function(current_frame) {
+      return 10 + this.rolls[current_frame + 1] + this.rolls[current_frame + 2];
     };
     Game.prototype._spareBonus = function(current_frame) {
       return 10 + this.rolls[current_frame + 2];

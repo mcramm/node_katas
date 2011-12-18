@@ -22,3 +22,13 @@ describe "Game", ->
         addRoll 17, 0
 
         expect( game.getScore() ).toBe(16)
+
+    it "should calculate correctly with one strike", ->
+        game.roll 10
+        game.roll 3
+        game.roll 4
+
+        addRoll 17, 0
+
+        expect( game.getScore() ).toBe(24)
+
