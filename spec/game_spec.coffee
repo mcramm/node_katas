@@ -1,5 +1,5 @@
 game = {}
-addRoll = (num, pins) ->
+addRolls = (num, pins) ->
     game.roll(pins) for x in [0..num-1]
 
 describe "Game", ->
@@ -7,11 +7,11 @@ describe "Game", ->
         game = require("../js/game").Game()
 
     it "should calculate a score of 0 for a game of all zeros", ->
-        addRoll 20, 0
+        addRolls 20, 0
         expect( game.getScore() ).toBe(0)
 
     it "should calculate correctly for an average game", ->
-        addRoll 20, 1
+        addRolls 20, 1
         expect( game.getScore() ).toBe(20)
 
     it "should calculate correctly with one spare", ->
@@ -19,7 +19,7 @@ describe "Game", ->
         game.roll 5
         game.roll 3
 
-        addRoll 17, 0
+        addRolls 17, 0
 
         expect( game.getScore() ).toBe(16)
 
@@ -28,7 +28,12 @@ describe "Game", ->
         game.roll 3
         game.roll 4
 
-        addRoll 17, 0
+        addRolls 17, 0
 
         expect( game.getScore() ).toBe(24)
+
+    it "should calculate a perfect game", ->
+        addRolls 12, 10
+
+        expect( game.getScore() ).toBe(300)
 
