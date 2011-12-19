@@ -36,7 +36,9 @@ task 'test', 'Run the tests', ->
     test()
 
 task 'watch', 'Watch for file changes and compile into javascript', ->
-    fs.watch 'spec', (event, filename) -> test()
-    fs.watch 'lib', (event, filename) -> compile test
+    fs.watch 'spec', (event, filename) -> 
+        test()
+    fs.watch 'lib', (event, filename) -> 
+        compile test
 
     compile test
