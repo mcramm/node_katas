@@ -13,7 +13,7 @@ log = (message, color, explanation) ->
     console.log color + message + reset + ' ' + (explanation or '')
 
 compile = (callback) ->
-    coffee = exec "coffee -o js -c lib", (error, stdout, stderr) ->
+    exec "coffee -o js -c lib", (error, stdout, stderr) ->
         if error is null
             log 'compiled!', green
             callback?()
@@ -23,7 +23,7 @@ compile = (callback) ->
 test = ->
     command = 'jasmine-node --coffee spec'
 
-    mocha = exec command, (error, stdout, stderr) ->
+    exec command, (error, stdout, stderr) ->
         if error is null
             log stdout, green
         else
@@ -36,8 +36,7 @@ task 'test', 'Run the tests', ->
     test()
 
 task 'watch', 'Watch for file changes and compile into javascript', ->
-    fs.watch 'spec', (event, filename) ->
-        test()
-    fs.watch 'lib', (event, filename) ->
-        compile test
+    fs.watch 'spec', (event, filename) -> test()
+    fs.watch 'lib', (event, filename) -> compile test
+
     compile test
