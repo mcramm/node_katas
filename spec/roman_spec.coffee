@@ -13,3 +13,13 @@ describe "Roman Converter", ->
         expect( roman.convert(5) ).toBe("V")
     it "should convert 6 to VI", ->
         expect( roman.convert(6) ).toBe("VI")
+    it "should convert 7 to VII", ->
+        expect( roman.convert(7) ).toBe("VII")
+    it "should convert 8 to VIII", ->
+        expect( roman.convert(8) ).toBe("VIII")
+    it "should convert 9 to IX", ->
+        expect( roman.convert(9) ).toBe("IX")
+    it "should convert 10 to X", ->
+        expect( roman.convert(10) ).toBe("X")
+    it "should convert 11 to XI", ->
+        expect( roman.convert(11) ).toBe("XI")

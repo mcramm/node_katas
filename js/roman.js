@@ -2,7 +2,7 @@
   var Roman;
   Roman = (function() {
     function Roman() {
-      this.ariabic_roman = [[5, "V"], [4, "IV"], [1, "I"]];
+      this.ariabic_roman = [[10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"]];
     }
     Roman.prototype.convert = function(num) {
       var ariabic, numerals, roman, string, _i, _len, _ref;
